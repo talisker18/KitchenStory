@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+	<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/background.css"/>
+    <!-- using datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+  </head>
+  <body> 
+  	<nav th:replace="fragments/navbar.html :: navbar"></nav>
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Product List</h1>
+        <h5 class="text-info font-weight-bold">Update or delete products</h5>
+      </header>
+      <hr class="border-dark" />
+      <section>
+      	<div class="container">
+		<table class="table table-bordered table-striped" id="product-table">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Product Id</th>
+					<th>Category</th>
+					<th>Product Description</th>
+					<th>Price in $</th>
+					<th>Image Source</th>
+					<th>Action</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product: ${productList}">
+					<td><img th:src="${product.productImgSource}" alt="productImg" width="50" height="50"></td>
+					<td th:text="${product.productId}"></td>
+					<td th:text="${product.categoryText}"></td>
+					<td th:text="${product.productDescription}"></td>
+					<td th:text="${product.productPrice}"></td>
+					<td th:text="${product.productImgSource}"></td>
+					<td>
+						<a th:href="@{/admin/showUpdateForm(productId=${product.productId})}" class="btn btn-info">Update</a>
+					</td>
+					<td>
+						<a th:href="@{/admin/deleteProduct(productId=${product.productId})}" class="btn btn-danger ml-2">Delete</a> <!-- margin left -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+      	<div class="row my-5">
+            <div class="col">
+            	<a th:href="@{/admin}">
+            		Go back to admin page
+            	</a>
+            </div>
+        </div><br><br>
+      </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- using datatable -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#product-table").DataTable({ //get element with this id
+			'aoColumnDefs': [{
+				'bSortable': false,
+				'aTargets': [-1,-2] //remove sorting for 'Update' and 'Delete' column
+			}]
+		});
+	})
+</script>
+  </body>
+</html>

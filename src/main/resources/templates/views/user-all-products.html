@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Products</title>
+	<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/background.css"/>
+    <!-- using datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+  </head>
+  <!-- use relative path ../ to properly show images. If not, path 'home/' for example will not show the images for some reason, it would show the image only if hitting '/home' -->
+  <body> 
+  	<nav th:replace="fragments/navbar.html :: navbar"></nav>
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">All Products</h1>
+        <h5 class="text-info font-weight-bold">Click on button to put Product into Shopping Cart</h5>
+      </header>
+      <hr class="border-dark" />
+      <section class="my-5">
+	      <table class="table table-bordered table-striped" id="product-table">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Category</th>
+					<th>Product Description</th>
+					<th>Price in $</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product: ${productList}">
+					<td><img th:src="${product.productImgSource}" alt="productImg" width="50" height="50"></td>
+					<td th:text="${product.categoryText}"></td>
+					<td th:text="${product.productDescription}"></td>
+					<td th:text="${product.productPrice}"></td>
+					<td>
+						<form th:action="@{/home/addToCart}" method="post">
+							<button class="btn btn-primary" type="submit" onclick="return showPopup()">Add to Cart</button>
+							<input type="hidden" name="productId" th:value="${product.productId}">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+      </section><br><br>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- using datatable -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#product-table").DataTable({ //get element with this id
+			'aoColumnDefs': [{
+				'bSortable': false,
+				'aTargets': [-1] //remove sorting for Action column
+			}]
+		});
+	})
+	</script>
+	<script>
+		function showPopup() {
+			var answer = window.confirm("Add to Cart??");
+			if (answer) {
+			    return true;
+			}
+			else {
+			    return false;
+			}
+		}
+	</script>
+  </body>
+</html>

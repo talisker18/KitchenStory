@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/background.css"/>
+  </head>
+  <body> 
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Registration</h1>
+        <h5 class="text-info font-weight-bold">Please fill in all fields</h5>
+      </header>
+      <hr class="border-dark" />
+      <section>
+	       	<form th:action="@{/registerConfirmation}" th:object="${userModel}" method="post" onsubmit="return validateFormInputs()"> <!-- onsubmit="event.preventDefault(); validateFormInputs();" -->
+	       		Username: <input type="text" id="username" th:field="*{username}" placeholder="Enter Username" class="form-control col-4 mb-4" autocomplete="off" required autofocus>
+	       		
+	       		Email: <input type="text" th:field="*{email}" placeholder="Enter Email" class="form-control col-4 mb-4" autocomplete="off" required>
+	       		<small id="emailHelp" name="emailHelp" class="form-text text-danger"></small>
+	       		
+				Firstname: <input type="text" th:field="*{firstName}" placeholder="Enter Firstname" class="form-control col-4 mb-4" autocomplete="off" required>
+				Lastname: <input type="text" th:field="*{lastName}" placeholder="Enter Lastname" class="form-control col-4 mb-4" autocomplete="off" required>
+				
+				Password: <input type="password" th:field="*{password}" placeholder="Enter Password" class="form-control col-4 mb-4" autocomplete="off">
+				<div id="messagePassword">
+                    <small><b>Password must contain the following:</b></small><br>
+                    <small id="letter" class="text-danger">At least one <b>lowercase</b> letter</small><br>
+                    <small id="capital" class="text-danger">At least one <b>uppercase</b> letter</small><br>
+                    <small id="number" class="text-danger">At least one <b>number</b></small><br>
+                    <small id="length" class="text-danger">Minimum <b>8 characters</b></small>
+                </div>
+				
+				<button class="btn btn-primary mt-5" type="submit" id="submitRegistration">Register</button>
+				<!--<input type="hidden" th:field="*{id}">-->
+			</form>
+		<hr/>
+		<a th:href="@{/welcome}">Back to Start</a>
+      </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+    <script src="js/email-and-pw-validation.js"></script>
+  </body>
+</html>

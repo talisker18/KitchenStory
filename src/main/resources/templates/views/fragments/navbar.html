@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new Product: Confirmation</title>
+	<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-image: url('../img/fruits.png'); background-repeat: no-repeat;"> 
+  <!-- thymeleaf allows to define fragments that can be reused by other pages -->
+  	<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary"> <!--if screen size is large the navbar will be expanded...at small size we see hambuger menu-->
+        <a href="/home" class="navbar-brand">
+            <img src="../img/logo.jpg" alt="logo" width="30" height="30">
+            Kitchen Story
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"> <!--mx-auto would align it in center...with mr-auto, align it to left-->
+                <li class="nav-item active">
+                    <a href="/home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/home/showAllProducts" class="nav-link">All Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.simplilearn.com/" class="nav-link">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a 
+                    href="" 
+                    class="nav-link dropdown-toggle" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false" 
+                    id="navbarDropdown" 
+                    role="button">
+                        <!--instead of using text 'Profile' we can use an icon-->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                    </a> <!--convert link to a button-->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="/viewProfile" class="dropdown-item">View Profile</a>
+                        <a href="/support" class="dropdown-item">Support</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+            	<li class="nav-item">
+                    <a href="/home/shoppingCart" class="nav-link">
+                    	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+						  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+						</svg>
+					</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Add new Product: Confirmation</h1>
+        <h5 class="text-info font-weight-bold">This is only for Admin User!</h5>
+      </header>
+      <hr class="border-dark" />
+      <section>
+      
+      </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

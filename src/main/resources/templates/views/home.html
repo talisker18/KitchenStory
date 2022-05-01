@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+	<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/background.css"/>
+    <style>
+    	td a {
+		    display:block;
+		    width:100%;
+		}
+    </style>
+  </head>
+  <!-- use relative path ../ to properly show images. If not, path 'home/' for example will not show the images for some reason, it would show the image only if hitting '/home' -->
+  <body> 
+  	<nav th:replace="fragments/navbar.html :: navbar"></nav>
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Home</h1>
+        <h5 class="text-info font-weight-bold">Have fun with using our Shop!</h5>
+      </header>
+      <hr class="border-dark" />
+      <section>
+      	<h3 class="my-5 font-weight-bold"><u>Top 5 Sellers</u></h3>
+	      <table class="table table-bordered table-striped" id="topseller-table">
+				<!--  <thead>
+					<tr>
+						<th>Employee Name</th>
+						<th>Employee Email</th>
+						<th>Employee Department</th>
+						<th>Action</th>
+						<th>Delete</th>
+					</tr>
+				</thead> -->
+				<tbody>
+					<tr>
+						<td><a href="www.wog.ch">test</a></td>
+					</tr>
+					<tr>
+						<td>test</td>
+					</tr>
+					<tr>
+						<td>test</td>
+					</tr>
+					<!--<tr th:each="employee: ${employees}">
+						<td th:text="${employee.name}"></td>
+						<td th:text="${employee.email}"></td>
+						<td th:text="${employee.department}"></td>
+						<td>
+							<a th:href="@{/showUpdateForm(employeeId=${employee.id})}" class="btn btn-info">Update</a>
+						</td>
+						<td>
+							<a th:href="@{/deleteEmployee(employeeId=${employee.id})}" class="btn btn-danger ml-2">Delete</a>
+						</td>
+					</tr> -->
+				</tbody>
+			</table>
+      </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

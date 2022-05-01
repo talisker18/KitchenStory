@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/background.css"/>
+  </head>
+  <body> 
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Login</h1>
+        <h5 class="text-info font-weight-bold">Provide your credentials to login</h5>
+      </header>
+      <hr class="border-dark" />
+      <section>
+	      <div class="container-fluid text-center">
+	      	<div th:if="${param.error}">
+	      	  	<p class="text-danger">Invalid Username or Password</p>
+	      	</div>
+	      	<div th:if="${param.logout}">
+	      	  	<p class="text-warning">You have been logged out</p>
+	      	</div>
+	      	<!-- with Spring security and custom login page, we do not have to define a controller method for post /login -->
+	      	<form th:action="@{/login}" method="post" class="font-weight-bold" style="max-width: 350px; margin: 0 auto;">
+	      		<div class="border border-secondary p-3 rounded">
+	      			<p>
+	      				<label for="username">Username</label><br />
+	              		<input type="text" id="username" name="username" class="form-control" autocomplete="off" autofocus required/>
+	      			</p>
+	      			<p>
+	      				<label for="password">Password</label><br />
+	              		<input type="password" id="password" name="password" class="form-control" required/>
+	      			</p>
+	      			<p>
+	      				<input type="submit" value="Login" class="btn btn-primary"/>
+	      			</p>
+	      		</div>
+	         </form>
+	      </div>
+      </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+  </body>
+</html>

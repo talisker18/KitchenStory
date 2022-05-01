@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration verification</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/background.css"/>
+  </head>
+  <body> 
+    <main class="col-md-8 mx-auto">
+      <header class="text-center">
+        <h1 class="text-primary text-uppercase my-5 font-weight-bold">Registration verification</h1>
+        <h5 class="text-danger font-weight-bold">Your registration verification was NOT successful. Reason: <span th:text="${result}"></span></h5>
+        <br>
+        <h5 class="text-info font-weight-bold">Please try to register again!</h5>
+      </header>
+      <section>
+      </section>
+      <hr class="border-dark" />
+      <section class="text-center">
+			<a th:href="@{/welcome}">Back to Start</a>
+    	</section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+        <div class="container text-center">
+          <span class="text-muted text-center font-weight-bold">&#169 2022 Kitchen Story | Switzerland | hjoel87@gmx.ch</span>
+        </div>
+    </footer>
+  </body>
+</html>
